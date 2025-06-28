@@ -181,6 +181,9 @@ class Transaction :
                     jumlah = int(input("Masukkan jumlah barang yang ingin anda beli: "))
                     harga = int(input("Masukkan harga barang yang ingin anda beli: "))
                     self.add_item(nama_barang, jumlah, harga)
+                    print()
+                    print("==== Barang yang di masukkan ke daftar belanjaan === ")
+                    self.check_order()
 
                 elif choice == 2:
                     nama_lama = input("Nama barang yang ingin di ganti: ")
