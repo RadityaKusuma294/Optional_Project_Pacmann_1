@@ -1,3 +1,11 @@
+""" 
+Program ini berisi daftar tugas dari
+sistem kasir sederhana.
+    
+Anda dapat menjalankan module ini setelah 
+dean hanya perlu memasukkan angka pada menu agar program dapat menjalankan
+"""
+
 from tabulate import tabulate
 
 class Transaction :
