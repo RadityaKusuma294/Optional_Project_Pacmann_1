@@ -2,15 +2,25 @@ from tabulate import tabulate
 
 class Transaction :
     def __init__(self):
+        """
+        Inisialisasi objek Transaction dengan list kosong untuk menyimpan item belanja.
+        """
         self.list_items = []
 
     def add_item(self, nama_item, jumlah_barang, harga_per_item):
+        """
+        Menambahkan barang ke dalam list_items.
+        """
         barang = {"nama": nama_item, "jumlah barang": jumlah_barang, "harga": harga_per_item}
         self.list_items.append(barang)
         return self.list_items
     
     def update_item_name (self, nama_lama, nama_baru):
+        """
+        Mengubah nama barang yang ada di list_items.
+        """
         try:
+        # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan 
             for i in range(len(self.list_items)):
                 if nama_lama in self.list_items[i]["nama"]:
                     self.list_items[i]["nama"] = nama_baru
@@ -22,7 +32,11 @@ class Transaction :
             return e
         
     def update_item_qty (self, nama_item, jumlah_baru):
+        """
+        Mengubah jumlah atau kuantitas barang yang ada di list_items.
+        """
         try :
+        # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan 
             for i in range(len(self.list_items)):
                 if nama_item in self.list_items[i]["nama"]:
                     self.list_items[i]["jumlah barang"] = jumlah_baru
@@ -35,7 +49,11 @@ class Transaction :
         
     
     def update_item_price (self, nama_item, harga_baru):
-        try :    
+        """
+        Mengubah harga barang yang ada di list_items.
+        """
+        try :
+        # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan
             for i in range(len(self.list_items)):
                 if nama_item in self.list_items[i]["nama"]:
                     self.list_items[i]["harga"] = harga_baru
@@ -47,8 +65,12 @@ class Transaction :
             return e
     
     def delete_item (self, nama_item):
+        """
+        Menghapus salah satu barang belanjaan berdasarkan nama barang.
+        """
         try: 
-            for i in range(len(self.list_items)):
+        # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan 
+            for i in range(len(self.list_items)): # for loop untuk menghapus barang berdasarkan index
                 if nama_item in self.list_items[i]["nama"]:
                     self.list_items.pop(i)
                     print(self.list_items)
@@ -59,12 +81,17 @@ class Transaction :
             return e
     
     def reset_transaction (self):
+        """
+        Menghapus semua barang belanjaan.
+        """
         self.list_items.clear()
         print(self.list_items)
         return "semua belanjaan barang anda telah dihapus."
     
     def check_order (self):
-        try: # ini bisa di lihat di pre-class pacmann
+
+        try: 
+        # try - except ini bertujuan untuk memeriksa apabila ada belanjaan yang berjumlah 0 dan harganya 0
             for check in self.list_items:
                 if check["nama"]=="" or check["jumlah barang"]==0 or check["harga"]==0:
                     raise ValueError 
@@ -77,6 +104,7 @@ class Transaction :
             print (tabulate(data_belajaan, headers = "keys"))
             return "terdapat kesalahan format input"
         else :
+        # apabila tidak tertangkap try-catch maka belanjaan sudah benar
             data_belajaan= []
             for i in range(len(self.list_items)):
                 new_dict = {"no": i+1, "Nama Item": self.list_items[i]["nama"], "Jumlah Item": self.list_items[i]["jumlah barang"], "Harga/Item": self.list_items[i]["harga"], "Total Harga": self.list_items[i]["harga"]*self.list_items[i]["jumlah barang"]}
@@ -87,10 +115,15 @@ class Transaction :
 
 
     def total_price(self):
+        """
+        Menghitung total harga dan memberikan diskon sesuai nominal pembelian.
+        """
         self.total_belanjaan_user = 0
+        # for loop untuk menjumlahkan total harga yang di beli pelanggan
         for total in self.list_items:
             self.total_belanjaan_user += (total["jumlah barang"]*total["harga"])
         
+        # branching berguna untuk mengetahui diskon yang diperoleh pealnggan berdasarkan total belanjaannnya
         if self.total_belanjaan_user > 200_000:
             diskon = "5%"
             dicount = int(diskon.replace("%",""))/100
@@ -172,13 +205,14 @@ class Transaction :
                     print(self.total_price())
                 
                 elif choice == 9:
+                    return "Terima Kasih\n"
                     break
 
                 else:
                     raise ValueError ("input anda salah")
             
             except ValueError as e:
-                return e
+                print (e)
             continue
 
 if __name__ == "__main__":
