@@ -12,12 +12,19 @@ class Transaction :
     def __init__(self):
         """
         Inisialisasi objek Transaction dengan list kosong untuk menyimpan item belanja.
+
         """
         self.list_items = []
 
     def add_item(self, nama_item, jumlah_barang, harga_per_item):
         """
-        Menambahkan barang ke dalam list_items.
+        Function yang bertujuan untuk menambahkan barang ke dalam list_items (daftar belanjaan).
+
+        Parameter
+        ---------
+        nama_item (str) = nama barang/produk yang ingin dimasukkan ke daftar belanjaan
+        jumlah_barang (int) = jumlah/kuantitas barang yang dibeli
+        harga_per_item (int) = Harga barang yang dibeli
         """
         barang = {"nama": nama_item, "jumlah barang": jumlah_barang, "harga": harga_per_item}
         self.list_items.append(barang)
@@ -25,7 +32,12 @@ class Transaction :
     
     def update_item_name (self, nama_lama, nama_baru):
         """
-        Mengubah nama barang yang ada di list_items.
+        Function yang bertujuan untuk mengubah nama barang yang ada di list_items (daftar belanjaan).
+
+        Parameter
+        ----------
+        nama_lama (str) = nama yang ingin dirubah
+        nama_baru (str) = nama baru
         """
         try:
         # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan 
@@ -41,7 +53,12 @@ class Transaction :
         
     def update_item_qty (self, nama_item, jumlah_baru):
         """
-        Mengubah jumlah atau kuantitas barang yang ada di list_items.
+        Function yang bertujuan untuk mengubah jumlah atau kuantitas barang yang ada di list_items (daftar belanjaan).
+
+        Parameter
+        ----------
+        nama_item (str) = nama barang yang jumlah/kuantitasnya ingin dirubah
+        jumlah_baru (int) = jumlah/kuantitas baru
         """
         try :
         # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan 
@@ -58,7 +75,12 @@ class Transaction :
     
     def update_item_price (self, nama_item, harga_baru):
         """
-        Mengubah harga barang yang ada di list_items.
+        Function yang bertujuan untuk Mengubah harga barang yang ada di list_items (daftar belanjaan).
+
+        Parameter
+        ----------
+        nama_item (str) = nama barang yang harganya ingin dirubah
+        harga_baru (int) = harga baru
         """
         try :
         # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan
@@ -74,7 +96,11 @@ class Transaction :
     
     def delete_item (self, nama_item):
         """
-        Menghapus salah satu barang belanjaan berdasarkan nama barang.
+        Function yang bertujuan untuk menghapus salah satu barang belanjaan dari list_items (daftar belanjaan) berdasarkan nama barang.
+
+        Parameter
+        ----------
+        nama_item (str) = nama barang yang ingin dihapus
         """
         try: 
         # try-except untuk memeriksa apakah yang nama barang terdapat di dafter belanjaan 
@@ -90,14 +116,18 @@ class Transaction :
     
     def reset_transaction (self):
         """
-        Menghapus semua barang belanjaan.
+        Function yang bertujuan untuk menghapus semua barang belanjaan dari list_items (daftar belanjaan).
+
         """
         self.list_items.clear()
         print(self.list_items)
         return "semua belanjaan barang anda telah dihapus."
     
     def check_order (self):
-
+        """
+        Function yang bertujuan untuk menampilkan semua list_items (daftar belanjaan) dan untuk memeriksa apakah nama barang belanjaan kosong atau kuantitas barang dan harga berilai 0.
+        
+        """
         try: 
         # try - except ini bertujuan untuk memeriksa apabila ada belanjaan yang berjumlah 0 dan harganya 0
             for check in self.list_items:
@@ -124,7 +154,8 @@ class Transaction :
 
     def total_price(self):
         """
-        Menghitung total harga dan memberikan diskon sesuai nominal pembelian.
+        Function yang bertujuan untuk menghitung total harga dan memberikan diskon sesuai nominal pembelian.
+
         """
         self.total_belanjaan_user = 0
         # for loop untuk menjumlahkan total harga yang di beli pelanggan
@@ -156,17 +187,21 @@ class Transaction :
 
 # input
     def main (self):
+        """
+        Function yang bertujuan untuk memulai suatu program dan menampilkan menu tugas kasir.
+        
+        """
         while True:
             print()
             print()
             print("="*60)
-            print("MESIN KASIR SEDERHANA PACMANN")
+            print("MENU TUGAS MESIN KASIR SEDERHANA PACMANN")
             print("="*60)
             print("1. Input barang belanjaan")
             print("2. Mengganti nama barang belanjaan")
             print("3. Mengganti jumlah barang belanjaan")
             print("4. Mengganti Harga barang belanjaan")
-            print("5. Tampilkan Daftar belanjaan")
+            print("5. Tampilkan dan periksa daftar belanjaan")
             print("6. Menghapus salah satu barang belanjaan" )
             print("7. Reset belanjaan")
             print("8. Total Belanjaan")
@@ -229,12 +264,5 @@ class Transaction :
 if __name__ == "__main__":
     transaksi = Transaction()
     print(transaksi.main())
-# transct_123 = Transaction()
-# transaksi_1 = transct_123.add_item("mobil", 1, 23_000_000)
-# transaksi_2 = transct_123.add_item("motor", 3, 13_000_000)
-# print(transaksi_2)
-# print(transct_123.update_item_price("pakaian", 50_000_000))
-# print("========================")
-# print(transct_123.check_order())
-# print(transct_123.total_price())
+
 
