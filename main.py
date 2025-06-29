@@ -207,8 +207,11 @@ class Transaction :
             print("8. Total Belanjaan")
             print("9. Exit\n")
 
-            choice = int(input('Masukkan Nomor Tugas : '))
-
+            try:
+                choice = int(input('Masukkan Nomor Tugas : '))
+            except:
+                choice = 0
+        
             try:
 
                 if choice == 1:
