@@ -163,8 +163,8 @@ class Transaction :
             self.total_belanjaan_user += (total["jumlah barang"]*total["harga"])
         
         # branching berguna untuk mengetahui diskon yang diperoleh pealnggan berdasarkan total belanjaannnya
-        if self.total_belanjaan_user > 200_000:
-            diskon = "5%"
+        if self.total_belanjaan_user > 500_000:
+            diskon = "10%"
             dicount = int(diskon.replace("%",""))/100
             self.total_harga_dengan_diskon = self.total_belanjaan_user - (self.total_belanjaan_user*dicount)
             return f"Total perbelanjaan anda sebesar Rp. {self.total_belanjaan_user} anda mendapat potongan sebesar {diskon}, sehingga anda hanya perlu membayar Rp. {self.total_harga_dengan_diskon}"
@@ -174,9 +174,9 @@ class Transaction :
             dicount = int(diskon.replace("%",""))/100
             self.total_harga_dengan_diskon = self.total_belanjaan_user - (self.total_belanjaan_user*dicount)
             return f"Total perbelanjaan anda sebesar Rp. {self.total_belanjaan_user} anda mendapat potongan sebesar {diskon}, sehingga anda hanya perlu membayar Rp. {self.total_harga_dengan_diskon}"
-        
-        elif self.total_belanjaan_user > 500_000:
-            diskon = "10%"
+
+        elif self.total_belanjaan_user > 200_000:
+            diskon = "5%"
             dicount = int(diskon.replace("%",""))/100
             self.total_harga_dengan_diskon = self.total_belanjaan_user - (self.total_belanjaan_user*dicount)
             return f"Total perbelanjaan anda sebesar Rp. {self.total_belanjaan_user} anda mendapat potongan sebesar {diskon}, sehingga anda hanya perlu membayar Rp. {self.total_harga_dengan_diskon}"
@@ -226,12 +226,12 @@ class Transaction :
                     print(self.update_item_name(nama_lama, nama_baru))
                 
                 elif choice == 3:
-                    jumlah_lama = input("Jumlah barang yang ingin di ganti: ")
+                    jumlah_lama = input("Nama barang yang jumlahnya ingin di ganti: ")
                     jumlah_baru = input("Jumlah barang baru: ")
                     print(self.update_item_name(jumlah_lama, jumlah_baru))
                 
                 elif choice == 4:
-                    harga_lama = input("Harga barang yang ingin di ganti: ")
+                    harga_lama = input("Nama barang yang harganya ingin di ganti: ")
                     harga_baru = input("Harga barang baru: ")
                     print(self.update_item_name(harga_lama, harga_baru))
                 
@@ -239,16 +239,18 @@ class Transaction :
                     print(self.check_order())
                 
                 elif choice == 6:
-                    nama_dihapus = input("nama barang yang ingin dihapus: ")
+                    nama_dihapus = input("Nama barang yang ingin dihapus: ")
                     print(self.delete_item(nama_dihapus))
-                    print(self.check_order())
+                    self.check_order()
                 
                 elif choice == 7:
                     print(self.reset_transaction())
                     self.check_order()
                 
                 elif choice == 8:
+                    self.check_order()
                     print(self.total_price())
+                    
                 
                 elif choice == 9:
                     return "Terima Kasih\n"
