@@ -99,6 +99,7 @@ Customer ingin menghapus semua daftar belanjaannya
 
 #### Test 4
 Customer ingin menghitung total belanjaannya
+
 ![kasir_output_5](https://github.com/RadityaKusuma294/Optional_Project_Pacmann_1/blob/main/images/revisi.jpg?raw=true)
 
 
